@@ -11,31 +11,31 @@ Determiná que será impreso en la consola, sin ejecutar el código.
 x = 1;  
 var a = 5;
 var b = 10;
-var c = function(a, b, c) {
+var c = function(a, b, c) { //se llama la f() en 27 con los valores a=8, b=9, c=10
   var x = 10;
-  console.log(x); 
-  console.log(a); 
-  var f = function(a, b, c) {
+  console.log(x); //x = 10
+  console.log(a); //a = 8
+  var f = function(a, b, c) { //se llama a la f() en 24, luego de ser llamada c() en 27 con los parametros a, b, c
     b = a; 
-    console.log(b); 
-    b = c;
-    var x = 5;
+    console.log(b); //b = 8
+    b = c; //b=10
+    var x = 5; //x= 5
   }
   f(a,b,c);
-  console.log(b); 
+  console.log(b); //b=9 -> toma directamente el valor del parametro b, no continua con los valores de c()
 }
 c(8,9,10);
-console.log(b); 
-console.log(x);
+console.log(b); //10
+console.log(x); //1
 ```
 
 ```javascript
 console.log(bar); //undefined
 console.log(baz); //not defined
-foo(); //"hola"
+foo(); //"hola" -> funciona gracias al hoisting
 function foo() { console.log('Hola!'); }
-var bar = 1; 
-baz = 2; 
+var bar = 1;  //en el console.log aparece undefined porque está creada en LE pero aun no se le asigna valor en el entorno de ejec
+baz = 2; //en el console.log aparece not defined porque es una variable sin var/let/const y por lo tanto se crea recien cuando el codigo la lee
 ```
 
 ```javascript
@@ -55,7 +55,7 @@ console.log(instructor); //tony
       console.log(instructor); //franco
    }
 })();
-console.log(instructor); //tony //-> la f() se autollama pero no cambia el valor de tony porque franco corresponde al contexto de la f()
+console.log(instructor); //tony //-> la f() se autollama pero no cambia el valor de tony porque franco corresponde al contexto de la f() -> var y f(){f(){var}}
 ```
 
 ```javascript
@@ -91,7 +91,7 @@ parseInt("09")        //9
 2 && 5                //5
 5 || 0                //5
 0 || 5                //5
-[3]+[3]-[10]          //concatena los 3 como string (33) y luego le resta 10 (23)
+[3]+[3]-[10]          //concatena los 3 como string (33) y luego le resta 10 (23), porque la resta siempre es matematica
 3>2>1                 // falso porque compara los primeros dos y devuelve true; luego lo compara a 1 y es false
 [] == ![]             // true
 ```
@@ -105,8 +105,8 @@ parseInt("09")        //9
 
 ```javascript
 function test() {
-   console.log(a);        //1
-   console.log(foo());    //2
+   console.log(a);        //undefined -> esta en LE pero no ha pasado aun por EC para que reciba valor
+   console.log(foo());    //2 -> la f() si se carga completa
 
    var a = 1;
    function foo() {
@@ -130,7 +130,7 @@ function getFood(food) {
     return snack;
 }
 
-getFood(false);
+getFood(false); //-> false, nunca se ejecuta el if y nunca cambia el nombre a Friskies
 ```
 
 
@@ -150,11 +150,11 @@ var obj = {
    }
 };
 
-console.log(obj.prop.getFullname()); //Aurelio
+console.log(obj.prop.getFullname()); //Aurelio de Rosa
 
 var test = obj.prop.getFullname;
 
-console.log(test()); //Juan Perez
+console.log(test()); //Juan Perez -> test se iguala a la f() {return this.fullname} retornara el fullname de ese this
 ```
 
 ### Event loop
@@ -169,5 +169,5 @@ function printing() {
    console.log(4);
 }
 
-printing();// 1 3 4 2
+printing();// 1 3 4 2   o  1 4 3 2 ?
 ```
