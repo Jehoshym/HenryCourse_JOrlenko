@@ -15,7 +15,7 @@ function countdownRecursiva(n){
     console.log(n);
     countdownRecursiva(n - 1);
 }
-/* Acá estamos creando una secuencia recursiva que crea una nueva funcion en la pila de ejecución, llenando la pila de ejecución.
+/* Acá estamos creando una secuencia recursiva que crea una nueva funcion en la pila de ejecución, llenando la pila de ejecución. -> es una funcion sin condicion de finalizacion
 */
 function factorial(n){
     if(n === 0 || n === 1) return 1;

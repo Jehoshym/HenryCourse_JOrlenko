@@ -20,11 +20,11 @@ describe('checkSeatStatus', function() {
 })
 
 describe('getRowNumber', function(){
-    it('should return 1 if the letter given is an A', () => {
+    it('should return 0 if the letter given is an A', () => {
         expect(getRowNumber('A')).toBe(0);
       });
       
-      it('should return 3 if the letter given is a C', () => {
+      it('should return 2 if the letter given is a C', () => {
         expect(getRowNumber('C')).toBe(2);
       });
 })
