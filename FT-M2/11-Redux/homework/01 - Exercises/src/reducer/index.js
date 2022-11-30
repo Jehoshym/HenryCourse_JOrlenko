@@ -14,22 +14,18 @@ function contador(state = initialState, action) {
   switch(action.type) {
     case INCREMENTO:
       return {
-        function (state){ 
-          return {
             ...state,
             contador: state.contador + 1,
           };
-        }
-      }
+        
+      
     case DECREMENTO:
       return {
-        function (state){
-          return {
             ...state,
             contador: state.contador - 1,
           };
-        }
-      }
+        
+      
     default:
       return {...state};
   }

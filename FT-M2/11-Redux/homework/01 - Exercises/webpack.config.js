@@ -7,5 +7,4 @@ module.exports = {
     filename: 'bundle.js' // el nombre del archivo que va a contener
     	//nuestro output - podemos nombrarlo como queramos pero bundle.js es lo típico  
   },
-  mode: 'development',
 }

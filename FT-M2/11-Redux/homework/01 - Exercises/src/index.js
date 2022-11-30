@@ -14,8 +14,8 @@ var valor = document.querySelector('#valor')
 function renderContador() {
   // Obtenemos la propiedad 'contador' de nuestro store:
   // Seteamos el número obtenido como texto dentro del elemento con id 'valor':
-  const numero  = store.getState().contador;
-  valor.innerHTML = numero
+  let cuenta = store.getState().contador;
+  valor.innerHTML = cuenta;
 }
 
 // Ejecutamos la función 'renderContador':
@@ -41,7 +41,7 @@ buttonDecremento.addEventListener('click', () => {
 });
 buttonIncrementoImpar.addEventListener('click', () => {
   const numero  = store.getState().contador;
-  if(!(numero%2) === 0) {
+  if((numero%2 !== 0)) {
     store.dispatch(incremento());
   }
   

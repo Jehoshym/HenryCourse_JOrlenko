@@ -6,19 +6,9 @@ const { INCREMENTO, DECREMENTO } = require('../action-types');
 // Eso se lo deja al reducer(s).
 
 
-const incremento = () => {
-  return {
-    type: INCREMENTO,
-    
-  }
-};
+const incremento = () => {return {type: INCREMENTO}};
 
-const decremento = () => {
-  return {
-    type: DECREMENTO,
-    
-  }
-};
+const decremento = () => {return {type: DECREMENTO}};
 
 module.exports = {
   incremento,
